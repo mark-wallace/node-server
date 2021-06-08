@@ -1,3 +1,9 @@
+Setup
+npm -install
+
+Start
+node index.js
+
 Authentication
 Google OAuth
 Passport - Handles Auth in Express Apps
