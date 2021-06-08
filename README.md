@@ -1,3 +1,9 @@
+Authentication
+Google OAuth
+Passport - Handles Auth in Express Apps
+Passport Strategy - specific implementation for Google OAuth
+
+Deployment
 Install Heroku for Ubuntu
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 

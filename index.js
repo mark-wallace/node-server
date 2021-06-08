@@ -1,13 +1,16 @@
 // common module because node does not support 
 const express = require('express'); 
 
+//auth modules
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20');
+
 // new instance of express server named app
 const app = express(); 
 
+passport.use(new GoogleStrategy());
 //route handler
-app.get('/', (req, res) => {
-    res.send({bye: 'buddy'});
-});
+
 
 //dynamic port configuration. Use Heroku's env var or use 5000
 const PORT = process.env.PORT || 5000;
