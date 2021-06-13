@@ -24,3 +24,6 @@ heroku open
 
 Troubleshooting
 heroku logs
+
+Mongo Stuff
+Each new server will need to be whitelisted to connect to the mongodb
