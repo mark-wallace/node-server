@@ -1,8 +1,7 @@
-Setup
-npm -install
+Running Locally
 
-Start
-node index.js
+1. npm -install
+2. npm run dev
 
 Authentication
 Google OAuth
@@ -14,13 +13,19 @@ Install Heroku for Ubuntu
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 heroku create
- - generates .git link
+
+- generates .git link
 
 git remote add heroku your-.git-link
 
 git push heroku master
 
 heroku open
+
+Heroku broken?
+heroku apps
+(get your app name)
+heroku git:remote -a your_app
 
 Troubleshooting
 heroku logs
