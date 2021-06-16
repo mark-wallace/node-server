@@ -25,22 +25,19 @@ passport.use(
       proxy: true, //this bit allows us to pass thru heroku's proxy on https
       //callback function after the user successfully auths
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       //next we check if this user already exists in the DB
-      User.findOne({ googleId: profile.id })
-        .then((existingUser) => {
-          if (existingUser) {
-            //we already have this guy, so lets call passports done function
-            done(null, existingUser);
-          } else {
-            //this next bit creates a new user instance and saves it to the collection
-            new User({ googleId: profile.id })
-              .save()
-              .then((user) => done(null, user));
-          }
-        })
-        .catch((error) => console.log("uh oh", error));
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        //we already have this guy, so lets call passports done function
+        done(null, existingUser);
+      } else {
+        //this next bit creates a new user instance and saves it to the collection
+        const user = await new User({ googleId: profile.id }).save();
+        done(null, user);
+      }
     }
   )
 );
+
 passport.initialize();
