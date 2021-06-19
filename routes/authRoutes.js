@@ -9,7 +9,14 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  //after user logs in google will send them here. We want to redirect to the surveys page.
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/surveys");
+    }
+  );
 
   app.get("/api/logout", (req, res) => {
     req.logout();
