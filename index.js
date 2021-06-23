@@ -20,8 +20,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-console.log("Server Started");
-
 //authRoutes just needs to be started and it requires  the express server
 //so we require it, get a function back, then immediately pass in the app object
 require("./routes/authRoutes")(app);

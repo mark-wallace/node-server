@@ -10,16 +10,16 @@ class Header extends Component {
         return;
       case false:
         return (
-          <li>
+          <li key="3">
             <a href="/auth/google">Login with Google</a>
           </li>
         );
       default:
         return [
-          <li>
+          <li key="1">
             <Payments />
           </li>,
-          <li>
+          <li key="2">
             <a href="/api/logout">Logout</a>
           </li>,
         ];
@@ -33,7 +33,9 @@ class Header extends Component {
             Emaily
           </Link>
           <ul className="right">
-            <li>{this.renderContent()}</li>
+            <li component="div" key="4">
+              {this.renderContent()}
+            </li>
           </ul>
         </div>
       </nav>
