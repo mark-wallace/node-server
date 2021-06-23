@@ -3,11 +3,15 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const keys = require("./config/keys");
+const bodyParser = require("body-parser");
 require("./models/User"); //load model before passport!
 require("./services/passport");
 
 // new instance of express server named app
 const app = express();
+
+//body parser middleware
+app.use(bodyParser.json());
 
 //tell express to use cookies
 app.use(
@@ -23,6 +27,7 @@ app.use(passport.session());
 //authRoutes just needs to be started and it requires  the express server
 //so we require it, get a function back, then immediately pass in the app object
 require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
