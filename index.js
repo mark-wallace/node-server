@@ -29,6 +29,19 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 
+if (process.env.NODE_ENV === "production") {
+  /* express will serve up production assets like 
+  our main.js or main.css. */
+  app.use(express.static("client/build"));
+
+  /* this will only be returned if express hasn't
+  already returned the static assets above */
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
