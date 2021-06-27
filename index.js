@@ -5,6 +5,7 @@ const passport = require("passport");
 const keys = require("./config/keys");
 const bodyParser = require("body-parser");
 require("./models/User"); //load model before passport!
+require("./models/Survey");
 require("./services/passport");
 
 // new instance of express server named app
