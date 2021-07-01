@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import SurveyField from "./SurveyField";
+import { Link } from "react-router-dom";
 
 const FIELDS = [
   { name: "title", label: "Survey Title" },
@@ -32,13 +33,36 @@ class SurveyForm extends Component {
           onSubmit={this.props.handleSubmit((values) => console.log(values))}
         >
           {this.renderFields()}
-          <button type="submit">Submit</button>
+          <Link to="/surveys" className="red btn-flat white-text">
+            Cancel
+          </Link>
+          <button type="submit" className="teal btn-flat right white-text">
+            Next
+            <i className="material-icons right">done</i>
+          </button>
         </form>
       </div>
     );
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  // if (!values.title) {
+  //   errors.title = "You must specify a title";
+  // }
+
+  FIELDS.forEach(({ name }) => {
+    if (!values[name]) {
+      errors[name] = "You must provide a value";
+    }
+  });
+  return errors;
+}
+
+//keys are defined by reduxform. Dont change them.
 export default reduxForm({
+  validate,
   form: "surveyForm",
 })(SurveyForm);
