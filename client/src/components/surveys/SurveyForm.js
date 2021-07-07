@@ -43,7 +43,7 @@ function validate(values) {
   const errors = {};
 
   formFields.forEach(({ name }) => {
-    errors.emails = validateEmails(values.emails || "");
+    errors.recipients = validateEmails(values.recipients || "");
 
     if (!values[name]) {
       errors[name] = "You must provide a value";
