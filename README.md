@@ -32,3 +32,10 @@ heroku logs
 
 Mongo Stuff
 Each new server will need to be whitelisted to connect to the mongodb
+
+SendGrid
+
+- To redirect SendGrid webhooks to development environment, use
+  `npx ngrok http 5000`
+- You will need to update the Email settings in SendGrid EACH TIME as the Forwarding URL is dynamic and expires every 2 hours
+- THIS REDIRECTS ALL TRAFFIC FROM SENDGRID, INCLUDING PROD
